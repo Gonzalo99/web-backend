@@ -637,19 +637,19 @@ $app->post('/send-email', function() use($db, $app){
 		$mail->isSMTP();                                            // Set mailer to use SMTP
 		$mail->Host       = 'smtp.gmail.com';  // Specify main and backup SMTP servers
 		$mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-		$mail->Username   = 'gonzalo.jurado.99@gmail.com';                     // SMTP username
-		$mail->Password   = 'gj140699';                               // SMTP password
+		$mail->Username   = 'victorvalenciahi@gmail.com';                     // SMTP username
+		$mail->Password   = 'inmobiliaria123';                               // SMTP password
 		$mail->SMTPSecure = 'tls';                                  // Enable TLS encryption, `ssl` also accepted
 		$mail->Port       = 587;                                    // TCP port to connect to
 
 		//Recipients
 		$mail->setFrom($data['correo'], $data['nombre'].' '.$data['apellidos']);
-		$mail->addAddress('gonzalo.jurado.99@gmail.com', 'Gonzalo');     // Add a recipient
+		$mail->addAddress('victorvalenciahi@gmail.com', 'Victor');     // Add a recipient
 
 		// Content
 		$mail->isHTML(true);                                  // Set email format to HTML
 		$mail->Subject = $data['asunto'];
-		$mail->Body    = $data['mensaje'];
+		$mail->Body    = $data['mensaje'] . '<br><br><br>' . $data['correo'];
 
 		$mail->send();
 
